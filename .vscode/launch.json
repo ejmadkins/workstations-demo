@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "name": "Kubernetes: Run/Debug - remote",
+            "type": "cloudcode.kubernetes",
+            "request": "launch",
+            "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+            "profile": "remote",
+            "watch": true,
+            "cleanUp": true,
+            "portForward": true,
+            "internalConsoleOptions": "neverOpen",
+            "imageRegistry": "europe-west2-docker.pkg.dev/ejmadkins-cloud-workstations/workstations-demo"
+        },
+        {
+            "name": "Kubernetes: Run/Debug - local",
+            "type": "cloudcode.kubernetes",
+            "request": "launch",
+            "skaffoldConfig": "${workspaceFolder}/skaffold.yaml",
+            "profile": "local",
+            "watch": true,
+            "cleanUp": true,
+            "portForward": true
+        }
+    ]
+}

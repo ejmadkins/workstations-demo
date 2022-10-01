@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buckets-info
+  labels:
+    env: dev-remote
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+      - image: europe-west2-docker.pkg.dev/ejmadkins-cloud-workstations/workstations-demo/workstations/workstations-demo:skaffold
+        name: buckets-info
+        resources:
+          requests:
+            cpu: "2000m"
+            memory: "2Gi"

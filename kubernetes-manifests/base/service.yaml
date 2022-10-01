@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: buckets-info
+spec:
+  type: NodePort
+  selector:
+    app: buckets-info
+  ports:
+    - port: 3000
