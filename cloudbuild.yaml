@@ -22,5 +22,5 @@ steps:
         gcloud deploy releases create release-$BUILD_ID
         --delivery-pipeline=web-app
         --region=us-central1
-        --source=k8s.yaml
+        --from-k8s-manifest=k8s.yaml
         --build-artifacts=build-$BUILD_ID.json
