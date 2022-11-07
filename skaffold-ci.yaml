@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2beta2
+kind: Config
+metadata:
+  name: bucket-info
+build:
+  kustomize:
+    paths:
+      - kubernetes-manifests/base
+  artifacts:
+    - image: us-central1-docker.pkg.dev/ejmadkins-path-to-production/web-app/leeroy-web
+      context: .
+      buildpack:
+        builder: 'gcr.io/buildpacks/builder:v1'
+  tagPolicy:
+    gitCommit:
+      variant: AbbrevCommitSha
+  googleCloudBuild:
+    projectId: ejmadkins-path-to-production

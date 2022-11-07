@@ -1,0 +1,27 @@
+steps:
+  - id: 'Build, Test and Push to Registry'
+    name: 'gcr.io/k8s-skaffold/skaffold@sha256:016d35b18a904ad0fbd0b852ee20b3e09fdea57e2fd52228d825855949fa1178'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        skaffold build -f=skaffold.yaml --skip-tests=true
+  - id: 'Hydrate Manifests'
+    name: 'gcr.io/k8s-skaffold/skaffold@sha256:016d35b18a904ad0fbd0b852ee20b3e09fdea57e2fd52228d825855949fa1178'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        mkdir hydrated-manifests && \
+        skaffold render -f=skaffold-ci.yaml --loud=true --digest-source=remote --output=hydrated-manifests/k8s.yaml
+  - id: 'Create Cloud Deploy Release'
+    name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - >
+        gcloud deploy releases create release-$BUILD_ID
+        --delivery-pipeline=web-app
+        --region=us-central1
+        --source=hydrated-manifests/k8s.yaml
+        --images=web-app=us-central1-docker.pkg.dev/$PROJECT_ID/web-appo/web-app:$SHORT_SHA
