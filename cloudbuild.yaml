@@ -5,15 +5,14 @@ steps:
     args:
       - '-c'
       - |
-        mkdir artifacts && \
-        skaffold build -f=skaffold-ci.yaml --skip-tests=true --file-output artifacts/build-$BUILD_ID.json
+        skaffold build -f=skaffold-ci.yaml --skip-tests=true --file-output build-$BUILD_ID.json
   - id: 'Hydrate Manifests'
     name: 'gcr.io/k8s-skaffold/skaffold@sha256:016d35b18a904ad0fbd0b852ee20b3e09fdea57e2fd52228d825855949fa1178'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        skaffold render -f=skaffold-ci.yaml --loud=true --digest-source=remote --output=artifacts/k8s.yaml
+        skaffold render -f=skaffold-ci.yaml --loud=true --digest-source=remote --output=k8s.yaml
   - id: 'Create Cloud Deploy Release'
     name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: 'bash'
@@ -23,5 +22,5 @@ steps:
         gcloud deploy releases create release-$BUILD_ID
         --delivery-pipeline=web-app
         --region=us-central1
-        --source=artifacts/k8s.yaml
-        --build-artifacts=artifacts/build-$BUILD_ID.json
+        --source=k8s.yaml
+        --build-artifacts=build-$BUILD_ID.json
