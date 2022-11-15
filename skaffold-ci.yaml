@@ -17,4 +17,4 @@ build:
 manifests:
   kustomize:
     paths:
-      - kubernetes-manifests/remote
+      - kubernetes-manifests/ci

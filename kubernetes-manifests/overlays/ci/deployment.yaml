@@ -1,0 +1,17 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buckets-info
+  labels:
+    env: prod
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+        - image: us-central1-docker.pkg.dev/ejmadkins-path-to-production/web-app/leeroy-web:skaffold
+          name: buckets-info
+          resources:
+            requests:
+              cpu: '2000m'
+              memory: '2Gi'
