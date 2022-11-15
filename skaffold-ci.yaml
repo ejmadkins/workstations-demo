@@ -17,4 +17,4 @@ build:
 manifests:
   kustomize:
     paths:
-      - kubernetes-manifests/ci
+      - kubernetes-manifests/overlays/ci
