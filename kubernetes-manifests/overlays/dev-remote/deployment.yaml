@@ -9,7 +9,7 @@ spec:
   template:
     spec:
       containers:
-      - image: europe-west2-docker.pkg.dev/ejmadkins-cloud-workstations/workstations-demo/workstations/workstations-demo:skaffold
+      - image: us-central1-docker.pkg.dev/ejmadkins-path-to-production/web-app/leeroy-web:skaffold
         name: buckets-info
         resources:
           requests:

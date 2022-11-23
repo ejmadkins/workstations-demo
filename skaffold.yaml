@@ -26,7 +26,7 @@ profiles:
   - name: remote
     build:
       artifacts:
-        - image: europe-west2-docker.pkg.dev/ejmadkins-cloud-workstations/workstations-demo/workstations/workstations-demo
+        - image: us-central1-docker.pkg.dev/ejmadkins-path-to-production/web-app/leeroy-web
           context: .
           buildpack:
             builder: "gcr.io/buildpacks/builder:v1"
@@ -35,7 +35,7 @@ profiles:
       googleCloudBuild:
         projectId: ejmadkins-cloud-workstations
     deploy:
-      kubeContext: gke_ejmadkins-cloud-workstations_europe-west2-a_dev-cluster
+      kubeContext: gke_ejmadkins-path-to-production_europe-west2-a_dev
       kustomize:
         paths:
           - kubernetes-manifests/overlays/dev-remote
