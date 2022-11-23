@@ -4,7 +4,7 @@ const app = express();
 const storage = new Storage();
 app.use(express.json());
 
-const bucketName = 'ejmadkins-workstation-bucket';
+const bucketName = 'ejmadkins-path-prod';
 
 app.get('/buckets', async (req, res) => {
   try {

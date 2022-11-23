@@ -33,7 +33,7 @@ profiles:
       tagPolicy:
         sha256: {}
       googleCloudBuild:
-        projectId: ejmadkins-cloud-workstations
+        projectId: ejmadkins-path-to-production
     deploy:
       kubeContext: gke_ejmadkins-path-to-production_europe-west2-a_dev
       kustomize:

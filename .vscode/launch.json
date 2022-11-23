@@ -10,7 +10,7 @@
             "cleanUp": true,
             "portForward": true,
             "internalConsoleOptions": "neverOpen",
-            "imageRegistry": "europe-west2-docker.pkg.dev/ejmadkins-cloud-workstations/workstations-demo"
+            "imageRegistry": "us-central1-docker.pkg.dev/ejmadkins-path-to-production/web-app/leeroy-web"
         },
         {
             "name": "Kubernetes: Run/Debug - local",

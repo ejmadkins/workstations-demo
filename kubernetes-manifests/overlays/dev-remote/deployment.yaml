@@ -13,5 +13,5 @@ spec:
         name: buckets-info
         resources:
           requests:
-            cpu: "2000m"
-            memory: "2Gi"
+            cpu: "200m"
+            memory: "128Mi"
