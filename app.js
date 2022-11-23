@@ -10,7 +10,7 @@ app.get('/buckets', async (req, res) => {
   try {
     const [files] = await storage.bucket(bucketName).getFiles();
     const fileResult = files.map((file) => file.name);
-    // console.log(fileResult);
+    console.log(fileResult);
     res.send(fileResult);
   } catch (error) {
     res.status(400).send(error.message);
